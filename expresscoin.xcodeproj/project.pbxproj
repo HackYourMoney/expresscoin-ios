@@ -8,18 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		0351F3057E4680A2F8F878CC /* Pods_expresscoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBBFA54A007181F99CFAB9B /* Pods_expresscoin.framework */; };
+		3E81D11A2004E9D600B57378 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E81D1182004E9D600B57378 /* MainVC.swift */; };
+		3E81D11B2004E9D600B57378 /* MainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E81D1192004E9D600B57378 /* MainVC.xib */; };
 		3EC052B51FF65E3200ED835B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC052B41FF65E3200ED835B /* AppDelegate.swift */; };
-		3EC052B71FF65E3200ED835B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC052B61FF65E3200ED835B /* ViewController.swift */; };
-		3EC052BA1FF65E3200ED835B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC052B81FF65E3200ED835B /* Main.storyboard */; };
 		3EC052BC1FF65E3200ED835B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EC052BB1FF65E3200ED835B /* Assets.xcassets */; };
 		3EC052BF1FF65E3200ED835B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC052BD1FF65E3200ED835B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E81D1182004E9D600B57378 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		3E81D1192004E9D600B57378 /* MainVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainVC.xib; sourceTree = "<group>"; };
 		3EC052B11FF65E3200ED835B /* expresscoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = expresscoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EC052B41FF65E3200ED835B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3EC052B61FF65E3200ED835B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3EC052B91FF65E3200ED835B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3EC052BB1FF65E3200ED835B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EC052BE1FF65E3200ED835B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3EC052C01FF65E3200ED835B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +49,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3E81D1172004E9BA00B57378 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3E81D1182004E9D600B57378 /* MainVC.swift */,
+				3E81D1192004E9D600B57378 /* MainVC.xib */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		3EC052A81FF65E3200ED835B = {
 			isa = PBXGroup;
 			children = (
@@ -70,9 +79,8 @@
 		3EC052B31FF65E3200ED835B /* expresscoin */ = {
 			isa = PBXGroup;
 			children = (
+				3E81D1172004E9BA00B57378 /* ViewControllers */,
 				3EC052B41FF65E3200ED835B /* AppDelegate.swift */,
-				3EC052B61FF65E3200ED835B /* ViewController.swift */,
-				3EC052B81FF65E3200ED835B /* Main.storyboard */,
 				3EC052BB1FF65E3200ED835B /* Assets.xcassets */,
 				3EC052BD1FF65E3200ED835B /* LaunchScreen.storyboard */,
 				3EC052C01FF65E3200ED835B /* Info.plist */,
@@ -150,9 +158,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E81D11B2004E9D600B57378 /* MainVC.xib in Resources */,
 				3EC052BF1FF65E3200ED835B /* LaunchScreen.storyboard in Resources */,
 				3EC052BC1FF65E3200ED835B /* Assets.xcassets in Resources */,
-				3EC052BA1FF65E3200ED835B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,22 +225,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EC052B71FF65E3200ED835B /* ViewController.swift in Sources */,
 				3EC052B51FF65E3200ED835B /* AppDelegate.swift in Sources */,
+				3E81D11A2004E9D600B57378 /* MainVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3EC052B81FF65E3200ED835B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3EC052B91FF65E3200ED835B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3EC052BD1FF65E3200ED835B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -364,7 +364,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.HackYourMoney.expresscoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -381,7 +381,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.HackYourMoney.expresscoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
