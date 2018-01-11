@@ -10,6 +10,8 @@
 		0351F3057E4680A2F8F878CC /* Pods_expresscoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBBFA54A007181F99CFAB9B /* Pods_expresscoin.framework */; };
 		3E81D11A2004E9D600B57378 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E81D1182004E9D600B57378 /* MainVC.swift */; };
 		3E81D11B2004E9D600B57378 /* MainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E81D1192004E9D600B57378 /* MainVC.xib */; };
+		3E9B66142007A1E7004F59FA /* UIColor + Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9B66132007A1E7004F59FA /* UIColor + Swift.swift */; };
+		3E9B66162007A4D2004F59FA /* UITableView + Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9B66152007A4D2004F59FA /* UITableView + Swift.swift */; };
 		3EC052B51FF65E3200ED835B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC052B41FF65E3200ED835B /* AppDelegate.swift */; };
 		3EC052BC1FF65E3200ED835B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EC052BB1FF65E3200ED835B /* Assets.xcassets */; };
 		3EC052BF1FF65E3200ED835B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC052BD1FF65E3200ED835B /* LaunchScreen.storyboard */; };
@@ -18,6 +20,8 @@
 /* Begin PBXFileReference section */
 		3E81D1182004E9D600B57378 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		3E81D1192004E9D600B57378 /* MainVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainVC.xib; sourceTree = "<group>"; };
+		3E9B66132007A1E7004F59FA /* UIColor + Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Swift.swift"; sourceTree = "<group>"; };
+		3E9B66152007A4D2004F59FA /* UITableView + Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Swift.swift"; sourceTree = "<group>"; };
 		3EC052B11FF65E3200ED835B /* expresscoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = expresscoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EC052B41FF65E3200ED835B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3EC052BB1FF65E3200ED835B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,6 +62,15 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		3E9B66122007A1B9004F59FA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3E9B66132007A1E7004F59FA /* UIColor + Swift.swift */,
+				3E9B66152007A4D2004F59FA /* UITableView + Swift.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		3EC052A81FF65E3200ED835B = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +92,7 @@
 		3EC052B31FF65E3200ED835B /* expresscoin */ = {
 			isa = PBXGroup;
 			children = (
+				3E9B66122007A1B9004F59FA /* Extensions */,
 				3E81D1172004E9BA00B57378 /* ViewControllers */,
 				3EC052B41FF65E3200ED835B /* AppDelegate.swift */,
 				3EC052BB1FF65E3200ED835B /* Assets.xcassets */,
@@ -226,6 +240,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EC052B51FF65E3200ED835B /* AppDelegate.swift in Sources */,
+				3E9B66162007A4D2004F59FA /* UITableView + Swift.swift in Sources */,
+				3E9B66142007A1E7004F59FA /* UIColor + Swift.swift in Sources */,
 				3E81D11A2004E9D600B57378 /* MainVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
