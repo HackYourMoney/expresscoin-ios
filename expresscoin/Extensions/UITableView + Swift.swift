@@ -1,9 +1,7 @@
-//
-//  UITableView + Swift.swift
-//  expresscoin
-//
-//  Created by 이동건 on 2018. 1. 11..
-//  Copyright © 2018년 이동건. All rights reserved.
-//
+import UIKit
 
-import Foundation
+extension UITableView {
+    func hideBottonSeparator(){
+        tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: 1))
+    }
+}
