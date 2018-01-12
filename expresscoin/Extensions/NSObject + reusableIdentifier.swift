@@ -8,8 +8,9 @@
 
 import Foundation
 
-extension NSObject {
-    static var resuableIdentifier: String {
+extension NSObject{
+    static var reusableIdentifier: String{
         return String(describing: self)
     }
 }
+
