@@ -10,6 +10,18 @@
 		0351F3057E4680A2F8F878CC /* Pods_expresscoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBBFA54A007181F99CFAB9B /* Pods_expresscoin.framework */; };
 		3E81D11A2004E9D600B57378 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E81D1182004E9D600B57378 /* MainVC.swift */; };
 		3E81D11B2004E9D600B57378 /* MainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E81D1192004E9D600B57378 /* MainVC.xib */; };
+		3E89DDF320089C9600920F47 /* alienleague.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E89DDF220089C9600920F47 /* alienleague.ttf */; };
+		3E89DDF62008A3D800920F47 /* EditCoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E89DDF42008A3D800920F47 /* EditCoinVC.swift */; };
+		3E89DDF72008A3D800920F47 /* EditCoinVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E89DDF52008A3D800920F47 /* EditCoinVC.xib */; };
+		3E89DDFB2008A40A00920F47 /* NSObject + reusableIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E89DDFA2008A40A00920F47 /* NSObject + reusableIdentifier.swift */; };
+		3E89DDFF2008AD0000920F47 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E89DDFE2008AD0000920F47 /* Coin.swift */; };
+		3E89DE012008AD2E00920F47 /* Exchange + Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E89DE002008AD2E00920F47 /* Exchange + Enum.swift */; };
+		3E89DE052008B05D00920F47 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E89DE032008B05D00920F47 /* TextFieldTableViewCell.swift */; };
+		3E89DE062008B05D00920F47 /* TextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E89DE042008B05D00920F47 /* TextFieldTableViewCell.xib */; };
+		3E89DE092008B07400920F47 /* CoinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E89DE072008B07400920F47 /* CoinTableViewCell.swift */; };
+		3E89DE0A2008B07400920F47 /* CoinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E89DE082008B07400920F47 /* CoinTableViewCell.xib */; };
+		3E89DE0D2008B09900920F47 /* ExchangeSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E89DE0B2008B09900920F47 /* ExchangeSelectTableViewCell.swift */; };
+		3E89DE0E2008B09900920F47 /* ExchangeSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E89DE0C2008B09900920F47 /* ExchangeSelectTableViewCell.xib */; };
 		3E9B66142007A1E7004F59FA /* UIColor + Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9B66132007A1E7004F59FA /* UIColor + Swift.swift */; };
 		3E9B66162007A4D2004F59FA /* UITableView + Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9B66152007A4D2004F59FA /* UITableView + Swift.swift */; };
 		3EC052B51FF65E3200ED835B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC052B41FF65E3200ED835B /* AppDelegate.swift */; };
@@ -20,6 +32,18 @@
 /* Begin PBXFileReference section */
 		3E81D1182004E9D600B57378 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		3E81D1192004E9D600B57378 /* MainVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainVC.xib; sourceTree = "<group>"; };
+		3E89DDF220089C9600920F47 /* alienleague.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alienleague.ttf; sourceTree = "<group>"; };
+		3E89DDF42008A3D800920F47 /* EditCoinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCoinVC.swift; sourceTree = "<group>"; };
+		3E89DDF52008A3D800920F47 /* EditCoinVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCoinVC.xib; sourceTree = "<group>"; };
+		3E89DDFA2008A40A00920F47 /* NSObject + reusableIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject + reusableIdentifier.swift"; sourceTree = "<group>"; };
+		3E89DDFE2008AD0000920F47 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		3E89DE002008AD2E00920F47 /* Exchange + Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exchange + Enum.swift"; sourceTree = "<group>"; };
+		3E89DE032008B05D00920F47 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		3E89DE042008B05D00920F47 /* TextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldTableViewCell.xib; sourceTree = "<group>"; };
+		3E89DE072008B07400920F47 /* CoinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTableViewCell.swift; sourceTree = "<group>"; };
+		3E89DE082008B07400920F47 /* CoinTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinTableViewCell.xib; sourceTree = "<group>"; };
+		3E89DE0B2008B09900920F47 /* ExchangeSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeSelectTableViewCell.swift; sourceTree = "<group>"; };
+		3E89DE0C2008B09900920F47 /* ExchangeSelectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExchangeSelectTableViewCell.xib; sourceTree = "<group>"; };
 		3E9B66132007A1E7004F59FA /* UIColor + Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Swift.swift"; sourceTree = "<group>"; };
 		3E9B66152007A4D2004F59FA /* UITableView + Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Swift.swift"; sourceTree = "<group>"; };
 		3EC052B11FF65E3200ED835B /* expresscoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = expresscoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,8 +82,39 @@
 			children = (
 				3E81D1182004E9D600B57378 /* MainVC.swift */,
 				3E81D1192004E9D600B57378 /* MainVC.xib */,
+				3E89DDF42008A3D800920F47 /* EditCoinVC.swift */,
+				3E89DDF52008A3D800920F47 /* EditCoinVC.xib */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3E89DDFC2008ACD800920F47 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3E89DDFE2008AD0000920F47 /* Coin.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3E89DDFD2008ACF200920F47 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				3E89DE002008AD2E00920F47 /* Exchange + Enum.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		3E89DE022008B04200920F47 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3E89DE032008B05D00920F47 /* TextFieldTableViewCell.swift */,
+				3E89DE042008B05D00920F47 /* TextFieldTableViewCell.xib */,
+				3E89DE072008B07400920F47 /* CoinTableViewCell.swift */,
+				3E89DE082008B07400920F47 /* CoinTableViewCell.xib */,
+				3E89DE0B2008B09900920F47 /* ExchangeSelectTableViewCell.swift */,
+				3E89DE0C2008B09900920F47 /* ExchangeSelectTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		3E9B66122007A1B9004F59FA /* Extensions */ = {
@@ -67,6 +122,7 @@
 			children = (
 				3E9B66132007A1E7004F59FA /* UIColor + Swift.swift */,
 				3E9B66152007A4D2004F59FA /* UITableView + Swift.swift */,
+				3E89DDFA2008A40A00920F47 /* NSObject + reusableIdentifier.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -92,9 +148,13 @@
 		3EC052B31FF65E3200ED835B /* expresscoin */ = {
 			isa = PBXGroup;
 			children = (
+				3E89DE022008B04200920F47 /* Cell */,
+				3E89DDFD2008ACF200920F47 /* Resource */,
+				3E89DDFC2008ACD800920F47 /* Model */,
 				3E9B66122007A1B9004F59FA /* Extensions */,
 				3E81D1172004E9BA00B57378 /* ViewControllers */,
 				3EC052B41FF65E3200ED835B /* AppDelegate.swift */,
+				3E89DDF220089C9600920F47 /* alienleague.ttf */,
 				3EC052BB1FF65E3200ED835B /* Assets.xcassets */,
 				3EC052BD1FF65E3200ED835B /* LaunchScreen.storyboard */,
 				3EC052C01FF65E3200ED835B /* Info.plist */,
@@ -173,8 +233,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E81D11B2004E9D600B57378 /* MainVC.xib in Resources */,
+				3E89DE062008B05D00920F47 /* TextFieldTableViewCell.xib in Resources */,
 				3EC052BF1FF65E3200ED835B /* LaunchScreen.storyboard in Resources */,
 				3EC052BC1FF65E3200ED835B /* Assets.xcassets in Resources */,
+				3E89DDF320089C9600920F47 /* alienleague.ttf in Resources */,
+				3E89DE0A2008B07400920F47 /* CoinTableViewCell.xib in Resources */,
+				3E89DE0E2008B09900920F47 /* ExchangeSelectTableViewCell.xib in Resources */,
+				3E89DDF72008A3D800920F47 /* EditCoinVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +307,14 @@
 				3EC052B51FF65E3200ED835B /* AppDelegate.swift in Sources */,
 				3E9B66162007A4D2004F59FA /* UITableView + Swift.swift in Sources */,
 				3E9B66142007A1E7004F59FA /* UIColor + Swift.swift in Sources */,
+				3E89DE012008AD2E00920F47 /* Exchange + Enum.swift in Sources */,
+				3E89DE092008B07400920F47 /* CoinTableViewCell.swift in Sources */,
+				3E89DDFB2008A40A00920F47 /* NSObject + reusableIdentifier.swift in Sources */,
+				3E89DE0D2008B09900920F47 /* ExchangeSelectTableViewCell.swift in Sources */,
+				3E89DDF62008A3D800920F47 /* EditCoinVC.swift in Sources */,
+				3E89DE052008B05D00920F47 /* TextFieldTableViewCell.swift in Sources */,
 				3E81D11A2004E9D600B57378 /* MainVC.swift in Sources */,
+				3E89DDFF2008AD0000920F47 /* Coin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +380,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -359,7 +431,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

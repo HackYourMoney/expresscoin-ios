@@ -8,9 +8,22 @@
 
 import UIKit
 
+class CoinExchange {
+    var exchange: Exchange?
+    var coins: [Coin]
+    
+    init(exchange: Exchange, coins: [Coin]) {
+        self.exchange = exchange
+        self.coins = coins
+    }
+}
+
 class MainVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var coinExchanges: [CoinExchange] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
