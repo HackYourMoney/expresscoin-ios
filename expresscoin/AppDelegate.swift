@@ -15,11 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-
         AppDelegate().window?.tintColor = UIColor.themeDark
+       
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: MainVC())
         window?.makeKeyAndVisible()
+        
+        UINavigationBar.appearance().tintColor = UIColor.themeDark
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.themeDark]
         return true
     }
 }

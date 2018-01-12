@@ -14,23 +14,21 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let titleView = UIImageView(image: #imageLiteral(resourceName: "expresscoin"))
-        titleView.contentMode = .scaleAspectFit
+        title = "EXPRESS COIN"
         
-        self.navigationItem.titleView = titleView
         tableView.delegate = self
         tableView.dataSource = self
         
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons8-add"), style: .plain, target: self, action: #selector(add))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.themeDark
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
         tableView.hideBottonSeparator()
     }
 }
 
 extension MainVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0;
+        return 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
@@ -45,6 +43,10 @@ extension MainVC: UITableViewDelegate {
 
 extension MainVC {
     @objc func add(){
+        present(UINavigationController(rootViewController: EditCoinVC()), animated: true, completion: nil)
+    }
+    
+    @objc func refresh(){
         
     }
 }
