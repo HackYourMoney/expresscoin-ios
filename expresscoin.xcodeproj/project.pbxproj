@@ -22,6 +22,10 @@
 		3E89DE0D2008B09900920F47 /* ExchangeSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E89DE0B2008B09900920F47 /* ExchangeSelectTableViewCell.swift */; };
 		3E89DE0E2008B09900920F47 /* ExchangeSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E89DE0C2008B09900920F47 /* ExchangeSelectTableViewCell.xib */; };
 		3E89DE142008C9F100920F47 /* DeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E89DE132008C9F100920F47 /* DeleteTableViewCell.swift */; };
+		3E89DE182008D26D00920F47 /* SelectExchangeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E89DE162008D26D00920F47 /* SelectExchangeVC.swift */; };
+		3E89DE192008D26D00920F47 /* SelectExchangeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E89DE172008D26D00920F47 /* SelectExchangeVC.xib */; };
+		3E99FE3B200B300300633B53 /* SelectCoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E99FE39200B300300633B53 /* SelectCoinVC.swift */; };
+		3E99FE3C200B300300633B53 /* SelectCoinVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E99FE3A200B300300633B53 /* SelectCoinVC.xib */; };
 		3E9B66142007A1E7004F59FA /* UIColor + Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9B66132007A1E7004F59FA /* UIColor + Swift.swift */; };
 		3E9B66162007A4D2004F59FA /* UITableView + Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9B66152007A4D2004F59FA /* UITableView + Swift.swift */; };
 		3EC052B51FF65E3200ED835B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC052B41FF65E3200ED835B /* AppDelegate.swift */; };
@@ -44,6 +48,10 @@
 		3E89DE0B2008B09900920F47 /* ExchangeSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeSelectTableViewCell.swift; sourceTree = "<group>"; };
 		3E89DE0C2008B09900920F47 /* ExchangeSelectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExchangeSelectTableViewCell.xib; sourceTree = "<group>"; };
 		3E89DE132008C9F100920F47 /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
+		3E89DE162008D26D00920F47 /* SelectExchangeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExchangeVC.swift; sourceTree = "<group>"; };
+		3E89DE172008D26D00920F47 /* SelectExchangeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectExchangeVC.xib; sourceTree = "<group>"; };
+		3E99FE39200B300300633B53 /* SelectCoinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCoinVC.swift; sourceTree = "<group>"; };
+		3E99FE3A200B300300633B53 /* SelectCoinVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCoinVC.xib; sourceTree = "<group>"; };
 		3E9B66132007A1E7004F59FA /* UIColor + Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Swift.swift"; sourceTree = "<group>"; };
 		3E9B66152007A4D2004F59FA /* UITableView + Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Swift.swift"; sourceTree = "<group>"; };
 		3EC052B11FF65E3200ED835B /* expresscoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = expresscoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +92,10 @@
 				3E81D1192004E9D600B57378 /* MainVC.xib */,
 				3E89DDF42008A3D800920F47 /* EditCoinVC.swift */,
 				3E89DDF52008A3D800920F47 /* EditCoinVC.xib */,
+				3E89DE162008D26D00920F47 /* SelectExchangeVC.swift */,
+				3E89DE172008D26D00920F47 /* SelectExchangeVC.xib */,
+				3E99FE39200B300300633B53 /* SelectCoinVC.swift */,
+				3E99FE3A200B300300633B53 /* SelectCoinVC.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -118,6 +130,13 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		3E89DE152008D24400920F47 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3E9B66122007A1B9004F59FA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +168,7 @@
 		3EC052B31FF65E3200ED835B /* expresscoin */ = {
 			isa = PBXGroup;
 			children = (
+				3E89DE152008D24400920F47 /* View */,
 				3E89DE022008B04200920F47 /* Cell */,
 				3E89DDFD2008ACF200920F47 /* Resource */,
 				3E89DDFC2008ACD800920F47 /* Model */,
@@ -233,12 +253,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E81D11B2004E9D600B57378 /* MainVC.xib in Resources */,
+				3E89DE192008D26D00920F47 /* SelectExchangeVC.xib in Resources */,
 				3E89DE062008B05D00920F47 /* TextFieldTableViewCell.xib in Resources */,
 				3EC052BF1FF65E3200ED835B /* LaunchScreen.storyboard in Resources */,
 				3EC052BC1FF65E3200ED835B /* Assets.xcassets in Resources */,
 				3E89DE0A2008B07400920F47 /* CoinTableViewCell.xib in Resources */,
 				3E89DE0E2008B09900920F47 /* ExchangeSelectTableViewCell.xib in Resources */,
 				3E89DDF72008A3D800920F47 /* EditCoinVC.xib in Resources */,
+				3E99FE3C200B300300633B53 /* SelectCoinVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,10 +275,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-expresscoin/Pods-expresscoin-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -304,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EC052B51FF65E3200ED835B /* AppDelegate.swift in Sources */,
+				3E99FE3B200B300300633B53 /* SelectCoinVC.swift in Sources */,
 				3E9B66162007A4D2004F59FA /* UITableView + Swift.swift in Sources */,
 				3E9B66142007A1E7004F59FA /* UIColor + Swift.swift in Sources */,
 				3E89DE012008AD2E00920F47 /* Exchange + Enum.swift in Sources */,
@@ -312,6 +337,7 @@
 				3E89DE0D2008B09900920F47 /* ExchangeSelectTableViewCell.swift in Sources */,
 				3E89DDF62008A3D800920F47 /* EditCoinVC.swift in Sources */,
 				3E89DE052008B05D00920F47 /* TextFieldTableViewCell.swift in Sources */,
+				3E89DE182008D26D00920F47 /* SelectExchangeVC.swift in Sources */,
 				3E81D11A2004E9D600B57378 /* MainVC.swift in Sources */,
 				3E89DE142008C9F100920F47 /* DeleteTableViewCell.swift in Sources */,
 				3E89DDFF2008AD0000920F47 /* Coin.swift in Sources */,

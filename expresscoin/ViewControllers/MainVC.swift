@@ -9,10 +9,10 @@
 import UIKit
 
 class CoinExchange {
-    var exchange: Exchange?
+    var exchange: String?
     var coins: [Coin]
     
-    init(exchange: Exchange, coins: [Coin]) {
+    init(exchange: String, coins: [Coin]) {
         self.exchange = exchange
         self.coins = coins
     }
@@ -22,7 +22,11 @@ class MainVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var coinExchanges: [CoinExchange] = []
+//    var coinExchanges: [CoinExchange] = []
+    
+    var coins:[Coin] = []
+    
+    var exchanges: [String] = ["BITHUMB", "COINONE", "COINNEST", "UPBIT"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +60,7 @@ extension MainVC: UITableViewDelegate {
 
 extension MainVC {
     @objc func add(){
-        present(UINavigationController(rootViewController: EditCoinVC()), animated: true, completion: nil)
+        present(UINavigationController(rootViewController: EditCoinVC(coin: nil)), animated: true, completion: nil)
     }
     
     @objc func refresh(){
