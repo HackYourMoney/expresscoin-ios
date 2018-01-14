@@ -22,11 +22,9 @@ class MainVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-//    var coinExchanges: [CoinExchange] = []
-    
+    var coinExchanges: [CoinExchange] = []
     var coins:[Coin] = []
     
-    var exchanges: [String] = ["BITHUMB", "COINONE", "COINNEST", "UPBIT"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +34,7 @@ class MainVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.register(UINib(nibName: CoinTableViewCell.reusableIdentifier, bundle:nil), forCellReuseIdentifier: CoinTableViewCell.reusableIdentifier)
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons8-add"), style: .plain, target: self, action: #selector(add))
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
@@ -44,11 +43,18 @@ class MainVC: UIViewController {
 }
 
 extension MainVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return coinExchanges.count
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return coinExchanges[section].coins.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: CoinTableViewCell.reusableIdentifier, for: indexPath) as! CoinTableViewCell
+        cell.coin = coinExchanges[indexPath.section].coins[indexPath.row]
+        return cell
     }
 }
 
@@ -56,14 +62,40 @@ extension MainVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true);
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return coinExchanges[section].exchange
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(78.0)
+    }
 }
 
 extension MainVC {
     @objc func add(){
-        present(UINavigationController(rootViewController: EditCoinVC(coin: nil)), animated: true, completion: nil)
+        let editCoinVC = EditCoinVC(coin: nil)
+        
+        editCoinVC.didUpdate = {(coin) in
+            self.coins.append(coin)
+            self.reload()
+        }
+        
+        present(UINavigationController(rootViewController: editCoinVC), animated: true, completion: nil)
     }
     
     @objc func refresh(){
         
+    }
+    
+    func reload(){
+        coinExchanges.removeAll()
+        for exchange in Resource.EXCHANGE {
+            let coinExchange = CoinExchange(exchange: exchange, coins: coins.filter({$0.exchange == exchange}))
+            if coinExchange.coins.count > 0 {
+                self.coinExchanges.append(coinExchange)
+            }
+        }
+        self.tableView.reloadData()
     }
 }

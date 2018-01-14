@@ -13,12 +13,15 @@ class EditCoinVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var coinPriceTextField: UITextField?
-    var buyPriceTextField: UITextField?
+    var exchangeTextField: UITextField!
+    var coinNameTextField: UITextField!
+    
+    var priceTextField: UITextField!
+    var amountTextField: UITextField!
     
     var didUpdate:((Coin)->())?
     var coin:Coin?
-    
+
     init(coin: Coin?) {
         self.coin = coin
         super.init(nibName: nil, bundle: nil)
@@ -36,15 +39,8 @@ class EditCoinVC: UIViewController {
         
         title = "Add Coin"
         
-        if coin == nil { // 코인을 새로 등록할 때
-            coin = Coin()
-        }
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide,
-                                             object: nil)
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow,
-                                             object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
        
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
@@ -74,7 +70,6 @@ extension EditCoinVC: UITableViewDataSource {
         }else if section == 2{
             return 1
         }
-        
         return 0
     }
     
@@ -87,6 +82,7 @@ extension EditCoinVC: UITableViewDataSource {
             if coin != nil{
                 cell.textField.text = coin?.exchange
             }
+            self.exchangeTextField = cell.textField
             cell.accessoryType = .disclosureIndicator
             cell.textField.isEnabled = false
             return cell
@@ -99,6 +95,7 @@ extension EditCoinVC: UITableViewDataSource {
                 }else{
                     cell.textField.placeholder = "코인을 선택하세요"
                 }
+                self.coinNameTextField = cell.textField
                 cell.accessoryType = .disclosureIndicator
                 cell.textField.isEnabled = false
                 
@@ -110,8 +107,8 @@ extension EditCoinVC: UITableViewDataSource {
                 cell.textField.keyboardType = .numberPad
                 cell.textField.isEnabled = true
                 
-                self.coinPriceTextField = cell.textField
-                addDoneButtonToTextField(textField: coinPriceTextField!)
+                self.priceTextField = cell.textField
+                addDoneButtonToTextField(textField: priceTextField)
                 
                 return cell
             }else if indexPath.row == 2 {
@@ -121,8 +118,8 @@ extension EditCoinVC: UITableViewDataSource {
                 cell.textField.keyboardType = .numberPad
                 cell.textField.isEnabled = true
                 
-                self.buyPriceTextField = cell.textField
-                addDoneButtonToTextField(textField: buyPriceTextField!)
+                self.amountTextField = cell.textField
+                addDoneButtonToTextField(textField: amountTextField)
                 
                 return cell
             }
@@ -140,10 +137,10 @@ extension EditCoinVC: UITableViewDelegate{
         
         if indexPath.section == 0 && indexPath.row == 0{
             // 거래소 선택
-            self.navigationController?.pushViewController(SelectExchangeVC(coin: coin!), animated: true)
+            self.navigationController?.pushViewController(SelectExchangeVC(textField: exchangeTextField), animated: true)
         }else if indexPath.section == 1 && indexPath.row == 0 {
             // 코인 선택
-            self.navigationController?.pushViewController(SelectCoinVC(coin: coin!), animated: true)
+            self.navigationController?.pushViewController(SelectCoinVC(textField: coinNameTextField), animated: true)
         }
     }
     
@@ -181,18 +178,33 @@ extension EditCoinVC {
     }
     
     @objc func save(){
-        SVProgressHUD.showSuccess(withStatus: "Saved")
-        SVProgressHUD.dismiss(withDelay: 1)
-        view.endEditing(true)
+        let alert = UIAlertController(title: "Error", message: "모든 항목을 입력하지 않았습니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        if let exchange = exchangeTextField.text, !exchange.isEmpty, let name = coinNameTextField.text, !name.isEmpty, let price = priceTextField.text,!price.isEmpty, let amount = amountTextField.text, !amount.isEmpty {
+            if let coin = self.coin { // 코인이 존재한다면, 즉 수정하기 위해 들어왔을 때
+                coin.exchange = exchange
+                coin.name = name
+                didUpdate!(coin)
+            }else{ // 코인이 존재하지 않는다면, 즉 코인을 새로 추가하러 들어왔을 때
+                let newCoin = Coin(exchange: exchange, name: name)
+                didUpdate!(newCoin)
+            }
+            SVProgressHUD.showSuccess(withStatus: "Saved")
+            SVProgressHUD.dismiss(withDelay: 1)
+            view.endEditing(true)
+        }else{
+            present(alert, animated: true, completion: nil)
+            return
+        }
     }
     
     func addDoneButtonToTextField(textField: UITextField){
         let toolbarDone = UIToolbar.init()
         toolbarDone.sizeToFit()
-        if textField == coinPriceTextField {
+        if textField == priceTextField {
             let barBtnNext = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(doneBtnPressed))
             toolbarDone.items = [barBtnNext]
-        }else if textField == buyPriceTextField{
+        }else if textField == amountTextField{
             let barBtnDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(doneBtnPressed)) // 버튼 액션
             toolbarDone.items = [barBtnDone]
         }
@@ -200,10 +212,10 @@ extension EditCoinVC {
     }
     
     @objc func doneBtnPressed(){
-        if (coinPriceTextField?.isFirstResponder)! {
-            buyPriceTextField?.becomeFirstResponder()
-        }else if (buyPriceTextField?.isFirstResponder)! {
-            buyPriceTextField?.resignFirstResponder()
+        if priceTextField.isFirstResponder {
+            amountTextField?.becomeFirstResponder()
+        }else if amountTextField.isFirstResponder {
+            amountTextField?.resignFirstResponder()
         }
     }
 }

@@ -11,11 +11,11 @@ import UIKit
 class SelectExchangeVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var exchanges: [String] = ["BITHUMB", "COINONE", "COINNEST", "UPBIT"]
-    var coin:Coin
     
-    init(coin: Coin) {
-        self.coin = coin
+    var textField: UITextField
+    
+    init(textField: UITextField) {
+        self.textField = textField
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -36,14 +36,14 @@ class SelectExchangeVC: UIViewController {
 extension SelectExchangeVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Exchange.count
+        return Resource.EXCHANGE.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = exchanges[indexPath.row]
-        if let exchange = coin.exchange {
-            if exchange == exchanges[indexPath.row]{
+        cell.textLabel?.text = Resource.EXCHANGE[indexPath.row]
+        if let exchange = textField.text {
+            if exchange == Resource.EXCHANGE[indexPath.row]{
                 cell.accessoryType = .checkmark
             }
         }else{
@@ -56,12 +56,12 @@ extension SelectExchangeVC: UITableViewDataSource {
 extension SelectExchangeVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let exchange = coin.exchange {
-            if exchange != exchanges[indexPath.row] {
-                coin.exchange = exchanges[indexPath.row]
+        if let exchange = textField.text {
+            if exchange != Resource.EXCHANGE[indexPath.row] {
+                textField.text = Resource.EXCHANGE[indexPath.row]
             }
         }else { // 없는 상태에서 셀을 선택한 것 -> 즉 처음 거래소를 선택한 것.
-            coin.exchange = exchanges[indexPath.row]
+            textField.text = Resource.EXCHANGE[indexPath.row]
         }
         tableView.reloadData()
     }

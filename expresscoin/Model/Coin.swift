@@ -9,6 +9,11 @@
 import Foundation
 
 class Coin {
-    var exchange: String?
-    var name:String?
+    var exchange:String
+    var name:String
+    
+    init(exchange: String, name:String) {
+        self.exchange = exchange
+        self.name = name
+    }
 }
