@@ -10,4 +10,5 @@ import Foundation
 
 class Coin {
     var exchange: String?
+    var name:String?
 }

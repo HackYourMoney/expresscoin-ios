@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class EditCoinVC: UIViewController {
 
@@ -69,7 +70,7 @@ extension EditCoinVC: UITableViewDataSource {
         if section == 0{
             return 1
         }else if section == 1{
-            return 2
+            return 3
         }else if section == 2{
             return 1
         }
@@ -93,6 +94,17 @@ extension EditCoinVC: UITableViewDataSource {
         }else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.reusableIdentifier, for: indexPath) as! TextFieldTableViewCell
             if indexPath.row == 0 {
+                cell.label.text = "코인"
+                if coin?.name != nil {
+                    cell.textField.text = coin?.name
+                }else{
+                    cell.textField.placeholder = "코인을 선택하세요"
+                }
+                cell.accessoryType = .disclosureIndicator
+                cell.textField.isEnabled = false
+                
+                return cell
+            }else if indexPath.row == 1 {
                 cell.label.text = "코인 가격"
                 cell.textField.placeholder = "구매 당시 코인 가격을 입력하세요"
                 cell.accessoryType = .none
@@ -102,7 +114,7 @@ extension EditCoinVC: UITableViewDataSource {
                 self.coinPriceTextField = cell.textField
                 
                 return cell
-            }else if indexPath.row == 1 {
+            }else if indexPath.row == 2 {
                 cell.label.text = "매수 가격"
                 cell.textField.placeholder = "얼마를 구매하셨는지 입력하세요."
                 cell.accessoryType = .none
@@ -126,7 +138,11 @@ extension EditCoinVC: UITableViewDelegate{
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 0 && indexPath.row == 0{
+            // 거래소 선택
             self.navigationController?.pushViewController(SelectExchangeVC(coin: coin!), animated: true)
+        }else if indexPath.section == 1 && indexPath.row == 0 {
+            // 코인 선택
+            self.navigationController?.pushViewController(SelectCoinVC(coin: coin!), animated: true)
         }
     }
     
@@ -134,7 +150,7 @@ extension EditCoinVC: UITableViewDelegate{
         if section == 0 {
             return "EXCHANGE"
         }else if section == 1 {
-            return "PRICE"
+            return "COIN"
         }
         return nil
     }
@@ -147,6 +163,8 @@ extension EditCoinVC {
     }
     
     @objc func save(){
-        dismiss(animated: true, completion: nil)
+        buyPriceTextField?.resignFirstResponder()
+        SVProgressHUD.showSuccess(withStatus: "Saved")
+        SVProgressHUD.dismiss(withDelay: 1)
     }
 }
