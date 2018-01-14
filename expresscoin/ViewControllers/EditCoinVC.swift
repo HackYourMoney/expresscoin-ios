@@ -36,10 +36,15 @@ class EditCoinVC: UIViewController {
         
         title = "Add Coin"
         
-        // COIN ADD
-        if coin == nil {
+        if coin == nil { // 코인을 새로 등록할 때
             coin = Coin()
         }
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide,
+                                             object: nil)
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow,
+                                             object: nil)
        
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
@@ -53,11 +58,6 @@ class EditCoinVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        coinPriceTextField?.becomeFirstResponder() // 가장 먼저 포커싱
     }
 }
 
@@ -87,7 +87,6 @@ extension EditCoinVC: UITableViewDataSource {
             if coin != nil{
                 cell.textField.text = coin?.exchange
             }
-            
             cell.accessoryType = .disclosureIndicator
             cell.textField.isEnabled = false
             return cell
@@ -112,6 +111,7 @@ extension EditCoinVC: UITableViewDataSource {
                 cell.textField.isEnabled = true
                 
                 self.coinPriceTextField = cell.textField
+                addDoneButtonToTextField(textField: cell.textField)
                 
                 return cell
             }else if indexPath.row == 2 {
@@ -122,6 +122,7 @@ extension EditCoinVC: UITableViewDataSource {
                 cell.textField.isEnabled = true
                 
                 self.buyPriceTextField = cell.textField
+                addDoneButtonToTextField(textField: cell.textField)
                 
                 return cell
             }
@@ -157,14 +158,53 @@ extension EditCoinVC: UITableViewDelegate{
 }
 
 extension EditCoinVC {
+    
+    @objc func keyboardWillShow(_ sender:Notification){
+        if UIDevice().userInterfaceIdiom == .phone { // SE 이하일 땐
+            if UIScreen.main.nativeBounds.height <= CGFloat(1136.0){
+                self.view.frame.origin.y = -150
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(_ sender:Notification){
+        if UIDevice().userInterfaceIdiom == .phone {
+            if UIScreen.main.nativeBounds.height <= CGFloat(1136.0){
+                self.view.frame.origin.y = 0
+            }
+        }
+    }
+    
     @objc func cancel(){
         view.endEditing(true) // 키보드가 같이 사라져야 한다.
         dismiss(animated: true, completion: nil)
     }
     
     @objc func save(){
-        buyPriceTextField?.resignFirstResponder()
         SVProgressHUD.showSuccess(withStatus: "Saved")
         SVProgressHUD.dismiss(withDelay: 1)
+        view.endEditing(true)
+    }
+    
+    func addDoneButtonToTextField(textField: UITextField){
+        let toolbarDone = UIToolbar.init()
+        toolbarDone.sizeToFit()
+        if textField == coinPriceTextField {
+            let barBtnNext = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(doneBtnPressed))
+            toolbarDone.items = [barBtnNext]
+        }else if textField == buyPriceTextField{
+            let barBtnDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(doneBtnPressed)) // 버튼 액션
+            toolbarDone.items = [barBtnDone]
+        }
+        textField.inputAccessoryView = toolbarDone
+    }
+    
+    @objc func doneBtnPressed(){
+        if (coinPriceTextField?.isFirstResponder)! {
+            buyPriceTextField?.becomeFirstResponder()
+        }else if (buyPriceTextField?.isFirstResponder)! {
+            buyPriceTextField?.resignFirstResponder()
+        }
     }
 }
+
