@@ -12,11 +12,10 @@ class SelectCoinVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var coins = ["비트코인", "이더리움", "리플", "이오스", "에이다", "퀀텀"]
-    var coin:Coin
+    var textField: UITextField
     
-    init(coin: Coin) {
-        self.coin = coin
+    init(textField: UITextField) {
+        self.textField = textField
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,14 +36,14 @@ class SelectCoinVC: UIViewController {
 
 extension SelectCoinVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return coins.count
+        return Resource.COIN.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = coins[indexPath.row]
-        if let name = coin.name {
-            if name == coins[indexPath.row] {
+        cell.textLabel?.text = Resource.COIN[indexPath.row]
+        if let name = textField.text {
+            if name == Resource.COIN[indexPath.row] {
                 cell.accessoryType = .checkmark
             }else{
                 cell.accessoryType = .none
@@ -59,12 +58,12 @@ extension SelectCoinVC: UITableViewDataSource {
 extension SelectCoinVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let name = coin.name {
-            if name != coins[indexPath.row]{
-                coin.name = coins[indexPath.row]
+        if let name = textField.text {
+            if name != Resource.COIN[indexPath.row]{
+                textField.text = Resource.COIN[indexPath.row]
             }
         }else {
-            coin.name = coins[indexPath.row]
+            textField.text = Resource.COIN[indexPath.row]
         }
         
         tableView.reloadData()
