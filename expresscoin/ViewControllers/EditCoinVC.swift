@@ -111,7 +111,7 @@ extension EditCoinVC: UITableViewDataSource {
                 cell.textField.isEnabled = true
                 
                 self.coinPriceTextField = cell.textField
-                addDoneButtonToTextField(textField: cell.textField)
+                addDoneButtonToTextField(textField: coinPriceTextField!)
                 
                 return cell
             }else if indexPath.row == 2 {
@@ -122,7 +122,7 @@ extension EditCoinVC: UITableViewDataSource {
                 cell.textField.isEnabled = true
                 
                 self.buyPriceTextField = cell.textField
-                addDoneButtonToTextField(textField: cell.textField)
+                addDoneButtonToTextField(textField: buyPriceTextField!)
                 
                 return cell
             }
