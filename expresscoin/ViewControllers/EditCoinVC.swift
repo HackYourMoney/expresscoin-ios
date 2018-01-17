@@ -106,7 +106,7 @@ extension EditCoinVC: UITableViewDataSource {
                 cell.accessoryType = .none
                 cell.textField.keyboardType = .numberPad
                 cell.textField.isEnabled = true
-                
+                cell.textField.delegate = self
                 self.priceTextField = cell.textField
                 addDoneButtonToTextField(textField: priceTextField)
                 
@@ -117,7 +117,7 @@ extension EditCoinVC: UITableViewDataSource {
                 cell.accessoryType = .none
                 cell.textField.keyboardType = .numberPad
                 cell.textField.isEnabled = true
-                
+                cell.textField.delegate = self
                 self.amountTextField = cell.textField
                 addDoneButtonToTextField(textField: amountTextField)
                 
@@ -199,14 +199,15 @@ extension EditCoinVC {
     }
     
     func addDoneButtonToTextField(textField: UITextField){
-        let toolbarDone = UIToolbar.init()
+        let toolbarDone = UIToolbar()
         toolbarDone.sizeToFit()
+        let flexBarBtn = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         if textField == priceTextField {
             let barBtnNext = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(doneBtnPressed))
-            toolbarDone.items = [barBtnNext]
+            toolbarDone.items = [flexBarBtn, barBtnNext]
         }else if textField == amountTextField{
             let barBtnDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(doneBtnPressed)) // 버튼 액션
-            toolbarDone.items = [barBtnDone]
+            toolbarDone.items = [flexBarBtn, barBtnDone]
         }
         textField.inputAccessoryView = toolbarDone
     }
@@ -219,4 +220,36 @@ extension EditCoinVC {
         }
     }
 }
+
+extension EditCoinVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.locale = Locale.current
+        formatter.maximumFractionDigits = 0
+        
+        if let removeAllSeparator = textField.text?.replacingOccurrences(of: formatter.groupingSeparator, with: "") {
+            var beforeFormattedString = removeAllSeparator + string
+            if formatter.number(from: string) != nil {
+                if let formattedNumber = formatter.number(from: beforeFormattedString), let formattedString = formatter.string(from: formattedNumber) {
+                    textField.text = formattedString
+                    return false
+                }
+            }else {
+                if string == ""{
+                    let lastIndex = beforeFormattedString.index(beforeFormattedString.endIndex, offsetBy: -1)
+                    beforeFormattedString = String(beforeFormattedString[..<lastIndex])
+                    if let formattedNumber = formatter.number(from: beforeFormattedString), let formattedString = formatter.string(from: formattedNumber) {
+                        textField.text = formattedString
+                        return false
+                    }
+                }else {
+                   return false
+                }
+            }
+        }
+        return true
+    }
+}
+
 
