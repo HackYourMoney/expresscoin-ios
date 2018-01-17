@@ -199,14 +199,15 @@ extension EditCoinVC {
     }
     
     func addDoneButtonToTextField(textField: UITextField){
-        let toolbarDone = UIToolbar.init()
+        let toolbarDone = UIToolbar()
         toolbarDone.sizeToFit()
+        let flexBarBtn = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         if textField == priceTextField {
             let barBtnNext = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(doneBtnPressed))
-            toolbarDone.items = [barBtnNext]
+            toolbarDone.items = [flexBarBtn, barBtnNext]
         }else if textField == amountTextField{
             let barBtnDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(doneBtnPressed)) // 버튼 액션
-            toolbarDone.items = [barBtnDone]
+            toolbarDone.items = [flexBarBtn, barBtnDone]
         }
         textField.inputAccessoryView = toolbarDone
     }
