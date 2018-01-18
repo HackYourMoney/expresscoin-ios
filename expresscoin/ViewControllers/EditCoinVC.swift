@@ -203,8 +203,9 @@ extension EditCoinVC {
         toolbarDone.sizeToFit()
         let flexBarBtn = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         if textField == priceTextField {
+            let hundredBtn = UIBarButtonItem(title: "백", style: .plain, target: self, action: #selector(hundredBtnPressed))
             let barBtnNext = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(doneBtnPressed))
-            toolbarDone.items = [flexBarBtn, barBtnNext]
+            toolbarDone.items = [hundredBtn,flexBarBtn, barBtnNext]
         }else if textField == amountTextField{
             let barBtnDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(doneBtnPressed)) // 버튼 액션
             toolbarDone.items = [flexBarBtn, barBtnDone]
@@ -212,6 +213,12 @@ extension EditCoinVC {
         textField.inputAccessoryView = toolbarDone
     }
     
+    @objc func hundredBtnPressed(){
+        if let string = priceTextField.text, !string.isEmpty {
+            textField(priceTextField, shouldChangeCharactersIn: NSRangeFromString(string), replacementString: "00")
+        }
+    }
+
     @objc func doneBtnPressed(){
         if priceTextField.isFirstResponder {
             amountTextField?.becomeFirstResponder()
