@@ -235,6 +235,7 @@ extension EditCoinVC: UITextFieldDelegate {
         formatter.locale = Locale.current
         formatter.maximumFractionDigits = 0
         
+        
         if let removeAllSeparator = textField.text?.replacingOccurrences(of: formatter.groupingSeparator, with: "") {
             var beforeFormattedString = removeAllSeparator + string
             if formatter.number(from: string) != nil {
