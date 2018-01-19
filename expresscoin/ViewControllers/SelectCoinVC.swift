@@ -12,10 +12,12 @@ class SelectCoinVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var textField: UITextField
+    let textField: UITextField
+    let coin: Coin?
     
-    init(textField: UITextField) {
+    init(textField: UITextField, coin: Coin?) {
         self.textField = textField
+        self.coin = coin
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -61,6 +63,9 @@ extension SelectCoinVC: UITableViewDelegate {
         if let name = textField.text {
             if name != Resource.COIN[indexPath.row]{
                 textField.text = Resource.COIN[indexPath.row]
+                if let coin = coin {
+                    coin.name = Resource.COIN[indexPath.row]
+                }
             }
         }else {
             textField.text = Resource.COIN[indexPath.row]

@@ -12,10 +12,12 @@ class SelectExchangeVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var textField: UITextField
+    let textField: UITextField
+    let coin: Coin?
     
-    init(textField: UITextField) {
+    init(textField: UITextField, coin: Coin?) {
         self.textField = textField
+        self.coin = coin
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -59,6 +61,9 @@ extension SelectExchangeVC: UITableViewDelegate {
         if let exchange = textField.text {
             if exchange != Resource.EXCHANGE[indexPath.row] {
                 textField.text = Resource.EXCHANGE[indexPath.row]
+                if let coin = coin {
+                    coin.exchange = Resource.EXCHANGE[indexPath.row]
+                }
             }
         }else { // 없는 상태에서 셀을 선택한 것 -> 즉 처음 거래소를 선택한 것.
             textField.text = Resource.EXCHANGE[indexPath.row]
