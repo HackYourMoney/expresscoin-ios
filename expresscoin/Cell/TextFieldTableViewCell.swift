@@ -18,14 +18,18 @@ class TextFieldTableViewCell: UITableViewCell {
         
         label.text = nil
         
+        self.accessoryType = .none
         textField.textAlignment = .right
+        textField.isEnabled = true
         selectionStyle = .none
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        self.accessoryType = .none
         textField.textAlignment = .right
+        textField.isEnabled = true
         label.text = nil
     }
 }
