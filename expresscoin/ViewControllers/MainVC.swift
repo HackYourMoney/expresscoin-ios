@@ -61,6 +61,13 @@ extension MainVC: UITableViewDataSource {
 extension MainVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true);
+        let editCoinVC = EditCoinVC(coin: coins[indexPath.row])
+        editCoinVC.didUpdate = { coin in
+            self.coins[indexPath.row] = coin
+            self.tableView.reloadData()
+        }
+        
+        present(UINavigationController(rootViewController: editCoinVC), animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
