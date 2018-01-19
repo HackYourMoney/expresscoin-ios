@@ -213,6 +213,7 @@ extension EditCoinVC: UITextFieldDelegate {
     
     func addDoneButtonToTextField(textField: UITextField){
         let toolbarDone = UIToolbar()
+        toolbarDone.tintColor = UIColor.themeDark
         toolbarDone.sizeToFit()
         let flexBarBtn = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let barBtnDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(doneBtnPressed)) // 버튼 액션
