@@ -13,6 +13,11 @@
         <scene sceneID="0a5-Q8-3Zd">
             <objects>
                 <viewController id="jEo-Yz-iXO" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HDn-ot-7k7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tableView>
                     <navigationItem key="navigationItem" title="EXPRESS COIN" id="Hzw-Y6-dhe">
                         <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="Guu-N9-xiS">
                             <color key="tintColor" red="0.20392156859999999" green="0.21176470589999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
