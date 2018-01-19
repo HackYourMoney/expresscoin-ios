@@ -57,8 +57,10 @@ class EditCoinVC: UIViewController {
     }
 }
 
+// MARK : UITableViewDataSource
+
 extension EditCoinVC: UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3;
     }
@@ -131,6 +133,8 @@ extension EditCoinVC: UITableViewDataSource {
     }
 }
 
+// MARK: UITableViewDelegate
+
 extension EditCoinVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -154,8 +158,9 @@ extension EditCoinVC: UITableViewDelegate{
     }
 }
 
+// MARK: Keyboard Issue on iPhone SE size
+
 extension EditCoinVC {
-    
     @objc func keyboardWillShow(_ sender:Notification){
         if UIDevice().userInterfaceIdiom == .phone { // SE 이하일 땐
             if UIScreen.main.nativeBounds.height <= CGFloat(1136.0){
@@ -171,7 +176,61 @@ extension EditCoinVC {
             }
         }
     }
+}
+
+// MARK: TextFieldDelegate - textField(:range:string:)->Bool
+
+extension EditCoinVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.locale = Locale.current
+        formatter.maximumFractionDigits = 0
+        
+        
+        if let removeAllSeparator = textField.text?.replacingOccurrences(of: formatter.groupingSeparator, with: "") {
+            var beforeFormattedString = removeAllSeparator + string
+            if formatter.number(from: string) != nil {
+                if let formattedNumber = formatter.number(from: beforeFormattedString), let formattedString = formatter.string(from: formattedNumber) {
+                    textField.text = formattedString
+                    return false
+                }
+            }else {
+                if string == ""{
+                    let lastIndex = beforeFormattedString.index(beforeFormattedString.endIndex, offsetBy: -1)
+                    beforeFormattedString = String(beforeFormattedString[..<lastIndex])
+                    if let formattedNumber = formatter.number(from: beforeFormattedString), let formattedString = formatter.string(from: formattedNumber) {
+                        textField.text = formattedString
+                        return false
+                    }
+                }else {
+                    return false
+                }
+            }
+        }
+        return true
+    }
     
+    func addDoneButtonToTextField(textField: UITextField){
+        let toolbarDone = UIToolbar()
+        toolbarDone.sizeToFit()
+        let flexBarBtn = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let barBtnDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(doneBtnPressed)) // 버튼 액션
+        if textField == priceTextField {
+            let millionBtn = UIBarButtonItem(title: "1만", style: .plain, target: self, action: #selector(millionBtnPressed))
+            let barBtnNext = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(nextBtnPressed))
+            toolbarDone.items = [millionBtn,barBtnNext,flexBarBtn, barBtnDone]
+        }else if textField == amountTextField{
+            toolbarDone.items = [flexBarBtn, barBtnDone]
+        }
+        textField.inputAccessoryView = toolbarDone
+    }
+    
+}
+
+// MARK: Target-Action
+
+extension EditCoinVC{
     @objc func cancel(){
         view.endEditing(true) // 키보드가 같이 사라져야 한다.
         dismiss(animated: true, completion: nil)
@@ -198,66 +257,20 @@ extension EditCoinVC {
         }
     }
     
-    func addDoneButtonToTextField(textField: UITextField){
-        let toolbarDone = UIToolbar()
-        toolbarDone.sizeToFit()
-        let flexBarBtn = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        if textField == priceTextField {
-            let hundredBtn = UIBarButtonItem(title: "백", style: .plain, target: self, action: #selector(hundredBtnPressed))
-            let barBtnNext = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(doneBtnPressed))
-            toolbarDone.items = [hundredBtn,flexBarBtn, barBtnNext]
-        }else if textField == amountTextField{
-            let barBtnDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(doneBtnPressed)) // 버튼 액션
-            toolbarDone.items = [flexBarBtn, barBtnDone]
+    
+    @objc func millionBtnPressed(){
+        if let string = priceTextField.text, !string.isEmpty {
+            textField(priceTextField, shouldChangeCharactersIn: NSRangeFromString(string), replacementString: "0000")
         }
-        textField.inputAccessoryView = toolbarDone
     }
     
-    @objc func hundredBtnPressed(){
-        if let string = priceTextField.text, !string.isEmpty {
-            textField(priceTextField, shouldChangeCharactersIn: NSRangeFromString(string), replacementString: "00")
-        }
-    }
-
-    @objc func doneBtnPressed(){
+    @objc func nextBtnPressed(){
         if priceTextField.isFirstResponder {
-            amountTextField?.becomeFirstResponder()
-        }else if amountTextField.isFirstResponder {
-            amountTextField?.resignFirstResponder()
+            amountTextField.becomeFirstResponder()
         }
     }
-}
-
-extension EditCoinVC: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.locale = Locale.current
-        formatter.maximumFractionDigits = 0
-        
-        
-        if let removeAllSeparator = textField.text?.replacingOccurrences(of: formatter.groupingSeparator, with: "") {
-            var beforeFormattedString = removeAllSeparator + string
-            if formatter.number(from: string) != nil {
-                if let formattedNumber = formatter.number(from: beforeFormattedString), let formattedString = formatter.string(from: formattedNumber) {
-                    textField.text = formattedString
-                    return false
-                }
-            }else {
-                if string == ""{
-                    let lastIndex = beforeFormattedString.index(beforeFormattedString.endIndex, offsetBy: -1)
-                    beforeFormattedString = String(beforeFormattedString[..<lastIndex])
-                    if let formattedNumber = formatter.number(from: beforeFormattedString), let formattedString = formatter.string(from: formattedNumber) {
-                        textField.text = formattedString
-                        return false
-                    }
-                }else {
-                   return false
-                }
-            }
-        }
-        return true
+    
+    @objc func doneBtnPressed(){
+        view.endEditing(true)
     }
 }
-
-
