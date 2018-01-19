@@ -37,7 +37,11 @@ class EditCoinVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        title = "Add Coin"
+        if coin != nil{
+            title = "코인 수정"
+        }else{
+            title = "코인 추가"
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
@@ -144,10 +148,10 @@ extension EditCoinVC: UITableViewDelegate{
         
         if indexPath.section == 0 && indexPath.row == 0{
             // 거래소 선택
-            self.navigationController?.pushViewController(SelectExchangeVC(textField: exchangeTextField), animated: true)
+            self.navigationController?.pushViewController(SelectExchangeVC(textField: exchangeTextField, coin: coin), animated: true)
         }else if indexPath.section == 1 && indexPath.row == 0 {
             // 코인 선택
-            self.navigationController?.pushViewController(SelectCoinVC(textField: coinNameTextField), animated: true)
+            self.navigationController?.pushViewController(SelectCoinVC(textField: coinNameTextField, coin: coin), animated: true)
         }
     }
     

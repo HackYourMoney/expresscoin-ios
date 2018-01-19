@@ -64,7 +64,7 @@ extension MainVC: UITableViewDelegate {
         let editCoinVC = EditCoinVC(coin: coins[indexPath.row])
         editCoinVC.didUpdate = { coin in
             self.coins[indexPath.row] = coin
-            self.tableView.reloadData()
+            self.reload()
         }
         
         present(UINavigationController(rootViewController: editCoinVC), animated: true, completion: nil)
