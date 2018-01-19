@@ -17,7 +17,7 @@ class Formatters {
         return formatter
     }()
 }
-class Coin {
+class Coin: Codable {
     var exchange:String
     var name:String
     var price: String
