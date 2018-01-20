@@ -17,7 +17,9 @@ class CoinTableViewCell: UITableViewCell {
     var coin: Coin? {
         didSet{
             nameLabel.text = coin?.name
-            priceLabel.text = coin?.price
+            if let price = coin?.decimalPrice {
+                priceLabel.text = price
+            }
         }
     }
     

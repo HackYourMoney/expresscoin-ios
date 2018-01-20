@@ -59,7 +59,8 @@ extension MainVC {
             
             coinExchanges.removeAll()
             
-            for exchange in Resource.EXCHANGE {
+            for exchangeData in Resource.EXCHANGE {
+                let exchange = String(exchangeData.split(separator: "-")[0])
                 let coinExchange = CoinExchange(exchange: exchange, coins: coins.filter({$0.exchange == exchange}))
                 if coinExchange.coins.count > 0 {
                     self.coinExchanges.append(coinExchange)

@@ -28,6 +28,8 @@
 		3E99FE3C200B300300633B53 /* SelectCoinVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E99FE3A200B300300633B53 /* SelectCoinVC.xib */; };
 		3E9B66142007A1E7004F59FA /* UIColor + Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9B66132007A1E7004F59FA /* UIColor + Swift.swift */; };
 		3E9B66162007A4D2004F59FA /* UITableView + Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9B66152007A4D2004F59FA /* UITableView + Swift.swift */; };
+		3EA66717201371D800C52EDB /* SelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA66715201371D800C52EDB /* SelectTableViewCell.swift */; };
+		3EA66718201371D800C52EDB /* SelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EA66716201371D800C52EDB /* SelectTableViewCell.xib */; };
 		3EC052B51FF65E3200ED835B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC052B41FF65E3200ED835B /* AppDelegate.swift */; };
 		3EC052BC1FF65E3200ED835B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EC052BB1FF65E3200ED835B /* Assets.xcassets */; };
 		3EC052BF1FF65E3200ED835B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC052BD1FF65E3200ED835B /* LaunchScreen.storyboard */; };
@@ -54,6 +56,8 @@
 		3E99FE3A200B300300633B53 /* SelectCoinVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCoinVC.xib; sourceTree = "<group>"; };
 		3E9B66132007A1E7004F59FA /* UIColor + Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Swift.swift"; sourceTree = "<group>"; };
 		3E9B66152007A4D2004F59FA /* UITableView + Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Swift.swift"; sourceTree = "<group>"; };
+		3EA66715201371D800C52EDB /* SelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableViewCell.swift; sourceTree = "<group>"; };
+		3EA66716201371D800C52EDB /* SelectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectTableViewCell.xib; sourceTree = "<group>"; };
 		3EC052B11FF65E3200ED835B /* expresscoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = expresscoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EC052B41FF65E3200ED835B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3EC052BB1FF65E3200ED835B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 				3E89DE072008B07400920F47 /* CoinTableViewCell.swift */,
 				3E89DE082008B07400920F47 /* CoinTableViewCell.xib */,
 				3E89DE132008C9F100920F47 /* DeleteTableViewCell.swift */,
+				3EA66715201371D800C52EDB /* SelectTableViewCell.swift */,
+				3EA66716201371D800C52EDB /* SelectTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 				3E4DADA620121D5600A6A96F /* ExchangeHeaderView.xib in Resources */,
 				3E89DE062008B05D00920F47 /* TextFieldTableViewCell.xib in Resources */,
 				3EC052BF1FF65E3200ED835B /* LaunchScreen.storyboard in Resources */,
+				3EA66718201371D800C52EDB /* SelectTableViewCell.xib in Resources */,
 				3EC052BC1FF65E3200ED835B /* Assets.xcassets in Resources */,
 				3E89DE0A2008B07400920F47 /* CoinTableViewCell.xib in Resources */,
 				3E89DDF72008A3D800920F47 /* EditCoinVC.xib in Resources */,
@@ -332,6 +339,7 @@
 				3E9B66162007A4D2004F59FA /* UITableView + Swift.swift in Sources */,
 				3E9B66142007A1E7004F59FA /* UIColor + Swift.swift in Sources */,
 				3E89DE012008AD2E00920F47 /* Exchange + Enum.swift in Sources */,
+				3EA66717201371D800C52EDB /* SelectTableViewCell.swift in Sources */,
 				3E89DE092008B07400920F47 /* CoinTableViewCell.swift in Sources */,
 				3E89DDFB2008A40A00920F47 /* NSObject + reusableIdentifier.swift in Sources */,
 				3E89DDF62008A3D800920F47 /* EditCoinVC.swift in Sources */,

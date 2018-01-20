@@ -29,10 +29,20 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdr-4w-fCC">
+                    <rect key="frame" x="0.0" y="37" width="375" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="kpj-5E-eIx"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="jdr-4w-fCC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6Bv-3I-uxh"/>
                 <constraint firstItem="wPv-c5-JLV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="6UJ-Hk-cFf"/>
+                <constraint firstItem="jdr-4w-fCC" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Cto-Pf-rid"/>
+                <constraint firstAttribute="trailing" secondItem="jdr-4w-fCC" secondAttribute="trailing" id="LaG-gK-pdL"/>
                 <constraint firstItem="BrU-Ky-mFF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Mkz-8d-8zn"/>
                 <constraint firstItem="wPv-c5-JLV" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="RoA-vU-iIq"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BrU-Ky-mFF" secondAttribute="trailing" constant="16" id="ahX-nY-tnF"/>
@@ -43,7 +53,7 @@
                 <outlet property="coinCount" destination="BrU-Ky-mFF" id="2jE-ia-ScN"/>
                 <outlet property="exchageLogo" destination="wPv-c5-JLV" id="gND-gP-Dmy"/>
             </connections>
-            <point key="canvasLocation" x="-125" y="42"/>
+            <point key="canvasLocation" x="-125.5" y="42"/>
         </view>
     </objects>
 </document>

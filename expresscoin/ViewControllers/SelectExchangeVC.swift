@@ -21,6 +21,9 @@ class SelectExchangeVC: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    var exchanges:[String] {
+        return Resource.EXCHANGE
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -31,6 +34,8 @@ class SelectExchangeVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.register(UINib(nibName: SelectTableViewCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: SelectTableViewCell.reusableIdentifier)
+        
         tableView.hideBottonSeparator()
     }
 }
@@ -38,14 +43,19 @@ class SelectExchangeVC: UIViewController {
 extension SelectExchangeVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Resource.EXCHANGE.count
+        return exchanges.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = Resource.EXCHANGE[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: SelectTableViewCell.reusableIdentifier, for: indexPath) as! SelectTableViewCell
+        // 재활용을 하기 때문에 반드시 .none을 default로 해주어야 한다. 안그러면 마크표시가 안지워짐
+        let exchange = exchanges[indexPath.row].split(separator: "-")
+        let name = String(exchange[0])
+        let code = String(exchange[1])
+        cell.name.text = name
+        cell.code.text = code
         if let exchange = textField.text {
-            if exchange == Resource.EXCHANGE[indexPath.row]{
+            if exchange == name{
                 cell.accessoryType = .checkmark
             }
         }else{
@@ -58,15 +68,17 @@ extension SelectExchangeVC: UITableViewDataSource {
 extension SelectExchangeVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let exchange = exchanges[indexPath.row].split(separator: "-")
+        let name = String(exchange[0])
         if let exchange = textField.text {
-            if exchange != Resource.EXCHANGE[indexPath.row] {
-                textField.text = Resource.EXCHANGE[indexPath.row]
+            if exchange != name {
+                textField.text = name
                 if let coin = coin {
-                    coin.exchange = Resource.EXCHANGE[indexPath.row]
+                    coin.exchange = name
                 }
             }
         }else { // 없는 상태에서 셀을 선택한 것 -> 즉 처음 거래소를 선택한 것.
-            textField.text = Resource.EXCHANGE[indexPath.row]
+            textField.text = name
         }
         tableView.reloadData()
     }
