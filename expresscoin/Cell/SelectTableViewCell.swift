@@ -10,15 +10,19 @@ import UIKit
 
 class SelectTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var code: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        name.text = nil
+        code.text = nil
+        accessoryType = .none
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        name.text = nil
+        code.text = nil
+        accessoryType = .none
+    }
 }

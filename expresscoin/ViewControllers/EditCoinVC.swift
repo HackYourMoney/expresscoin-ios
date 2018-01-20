@@ -96,11 +96,17 @@ extension EditCoinVC: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.reusableIdentifier, for: indexPath) as! TextFieldTableViewCell
             if indexPath.row == 0 {
                 cell.label.text = "코인"
+                
                 if coin?.name != nil {
                     cell.textField.text = coin?.name
                 }else{
-                    cell.textField.placeholder = "코인을 선택하세요"
+                    if let exchange = exchangeTextField.text, exchange.isEmpty{
+                        cell.textField.placeholder = "거래소를 먼저 선택하세요"
+                    }else{
+                        cell.textField.placeholder = "코인을 선택하세요."
+                    }
                 }
+                
                 self.coinNameTextField = cell.textField
                 cell.accessoryType = .disclosureIndicator
                 cell.textField.isEnabled = false
@@ -108,7 +114,7 @@ extension EditCoinVC: UITableViewDataSource {
                 return cell
             }else if indexPath.row == 1 {
                 cell.label.text = "코인 가격"
-                cell.textField.placeholder = "구매 당시 코인 가격을 입력하세요"
+                cell.textField.placeholder = "코인 가격을 입력하세요"
                 
                 if let price = coin?.price, let decimalPrice = Formatters.price.number(from: price){
                     cell.textField.text = Formatters.price.string(from: decimalPrice)
@@ -121,7 +127,7 @@ extension EditCoinVC: UITableViewDataSource {
                 return cell
             }else if indexPath.row == 2 {
                 cell.label.text = "매수 가격"
-                cell.textField.placeholder = "얼마를 구매하셨는지 입력하세요."
+                cell.textField.placeholder = "구매량을 입력하세요."
                 if let amount = coin?.amount, let decimalAmount = Formatters.price.number(from: amount) {
                     cell.textField.text = Formatters.price.string(from: decimalAmount)
                 }
@@ -149,9 +155,16 @@ extension EditCoinVC: UITableViewDelegate{
         if indexPath.section == 0 && indexPath.row == 0{
             // 거래소 선택
             self.navigationController?.pushViewController(SelectExchangeVC(textField: exchangeTextField, coin: coin), animated: true)
-        }else if indexPath.section == 1 && indexPath.row == 0 {
+        }else if indexPath.section == 1 && indexPath.row == 0{
+            let alert = UIAlertController(title: "Error", message: "거래소를 먼저 선택하세요.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+            
+            if let exchange = exchangeTextField.text, exchange.isEmpty{
+                present(alert, animated: true, completion: nil)
+            }else {
+                self.navigationController?.pushViewController(SelectCoinVC(textField: coinNameTextField, coin: coin, exchange: exchangeTextField.text!), animated: true)
+            }
             // 코인 선택
-            self.navigationController?.pushViewController(SelectCoinVC(textField: coinNameTextField, coin: coin), animated: true)
         }
     }
     
@@ -261,12 +274,13 @@ extension EditCoinVC{
         }
     }
     
-    
+    /*
     @objc func millionBtnPressed(){
         if let string = priceTextField.text, !string.isEmpty {
             textField(priceTextField, shouldChangeCharactersIn: NSRangeFromString(string), replacementString: "0000")
         }
     }
+     */
     
     @objc func nextBtnPressed(){
         if priceTextField.isFirstResponder {
