@@ -23,10 +23,17 @@ class Coin: Codable {
     var price: String
     var amount: String
     
+    var decimalPrice: String? {
+        if let number = Formatters.price.number(from: price){
+            return Formatters.price.string(from: number)
+        }
+        return nil
+    }
+    
     init(exchange: String, name:String, price: String, amount: String) {
         self.exchange = exchange
         self.name = name
-        self.price = price.replacingOccurrences(of: Formatters.price.groupingSeparator, with: "")
+        self.price = price.replacingOccurrences(of: Formatters.price.groupingSeparator, with: "") // "1,000,000" -> "1000000"
         self.amount = amount.replacingOccurrences(of: Formatters.price.groupingSeparator, with: "")
     }
 }
