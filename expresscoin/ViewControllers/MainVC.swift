@@ -115,7 +115,7 @@ extension MainVC: UITableViewDataSource {
 extension MainVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true);
-        let editCoinVC = EditCoinVC(coin: coins[indexPath.row])
+        let editCoinVC = EditCoinVC(coin: coinExchanges[indexPath.section].coins[indexPath.row])
         editCoinVC.didUpdate = { coin in
             self.coins[indexPath.row] = coin
             self.saveCoin()
@@ -147,6 +147,7 @@ extension MainVC {
     
     @objc func didDelete(_ notification: Notification) {
         guard let coinToDelete = notification.object as? Coin else {return}
+        coins.forEach {print($0.name)}
         let index = coins.index(where: {$0.name == coinToDelete.name})
         if let index = index {
             coins.remove(at: index)
