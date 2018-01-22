@@ -156,6 +156,7 @@ extension EditCoinVC: UITableViewDelegate{
             // 거래소 선택
             self.navigationController?.pushViewController(SelectExchangeVC(textField: exchangeTextField, coin: coin), animated: true)
         }else if indexPath.section == 1 && indexPath.row == 0{
+            // 코인 선택
             let alert = UIAlertController(title: "Error", message: "거래소를 먼저 선택하세요.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
             
@@ -164,7 +165,18 @@ extension EditCoinVC: UITableViewDelegate{
             }else {
                 self.navigationController?.pushViewController(SelectCoinVC(textField: coinNameTextField, coin: coin, exchange: exchangeTextField.text!), animated: true)
             }
-            // 코인 선택
+        }else if indexPath.section == 2 && indexPath.row == 0 {
+            // Delete
+            if let coin = coin {
+                let alert = UIAlertController(title: "Warning", message: "정말 삭제하시겠습니까?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
+                    NotificationCenter.default.post(name: Coin.didDelete, object: coin)
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                
+                present(alert, animated: true, completion: nil)
+            }
         }
     }
     

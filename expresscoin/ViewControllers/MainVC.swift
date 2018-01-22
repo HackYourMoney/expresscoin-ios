@@ -19,7 +19,7 @@ class CoinExchange {
 }
 
 class MainVC: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var coinExchanges: [CoinExchange] = []
@@ -40,6 +40,8 @@ class MainVC: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons8-add"), style: .plain, target: self, action: #selector(add))
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
         tableView.hideBottonSeparator()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didDelete(_:)), name: Coin.didDelete, object: nil)
         
         loadCoin()
     }
@@ -122,10 +124,6 @@ extension MainVC: UITableViewDelegate {
         present(UINavigationController(rootViewController: editCoinVC), animated: true, completion: nil)
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(78.0)
-    }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(38)
     }
@@ -145,5 +143,14 @@ extension MainVC {
     
     @objc func refresh(){
         // Refresh
+    }
+    
+    @objc func didDelete(_ notification: Notification) {
+        guard let coinToDelete = notification.object as? Coin else {return}
+        let index = coins.index(where: {$0.name == coinToDelete.name})
+        if let index = index {
+            coins.remove(at: index)
+        }
+        saveCoin()
     }
 }
