@@ -18,6 +18,9 @@ class Formatters {
     }()
 }
 class Coin: Codable {
+    
+    static let didDelete = Notification.Name(rawValue: "didDelete")
+    
     var exchange:String
     var name:String
     var price: String

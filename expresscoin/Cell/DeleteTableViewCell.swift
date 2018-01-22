@@ -13,7 +13,8 @@ class DeleteTableViewCell: UITableViewCell {
         
         textLabel?.textAlignment = .center
         textLabel?.textColor = .red
-        textLabel?.font = .systemFont(ofSize: 15)
+        textLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        
         textLabel?.text = "REMOVE"
     }
     
