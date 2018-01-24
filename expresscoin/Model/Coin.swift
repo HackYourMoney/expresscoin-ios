@@ -25,12 +25,28 @@ class Coin: Codable {
     var name:String
     var price: String
     var amount: String
+    var currentPrice: Double?
+    var currentValue: Double?
+    var valueDiff:Double?
     
     var decimalPrice: String? {
         if let number = Formatters.price.number(from: price){
             return Formatters.price.string(from: number)
         }
         return nil
+    }
+    
+    var valueDiffText: String {
+        if let valueDiff = self.valueDiff {
+            if valueDiff < 0.0 {
+                return "▼ -\(valueDiff)%"
+            }else if valueDiff == 0.0{
+                return "0 +0.00%"
+            }else {
+                return "▲ +\(valueDiff)"
+            }
+        }
+        return ""
     }
     
     init(exchange: String, name:String, price: String, amount: String) {
