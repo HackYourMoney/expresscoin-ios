@@ -13,13 +13,11 @@ class CoinTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceDiffLabel: UILabel!
+    @IBOutlet weak var currentValue: UILabel!
     
     var coin: Coin? {
         didSet{
             nameLabel.text = coin?.name
-            if let price = coin?.decimalPrice {
-                priceLabel.text = price
-            }
         }
     }
     
