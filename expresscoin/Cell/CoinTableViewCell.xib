@@ -30,16 +30,22 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="yrd-HR-PEb">
-                                <rect key="frame" x="0.0" y="29" width="308" height="17"/>
+                                <rect key="frame" x="0.0" y="25.5" width="308" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가격" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMY-7z-OH6">
-                                        <rect key="frame" x="0.0" y="0.0" width="24.5" height="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="24.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재가치" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tea-Eu-MQL">
+                                        <rect key="frame" x="118.5" y="0.0" width="59" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상승률" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVU-9Z-loF">
-                                        <rect key="frame" x="271.5" y="0.0" width="36.5" height="17"/>
+                                        <rect key="frame" x="271.5" y="0.0" width="36.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -63,6 +69,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="currentValue" destination="tea-Eu-MQL" id="8Fp-XC-1cr"/>
                 <outlet property="nameLabel" destination="u7O-Ac-TdV" id="SVw-xr-uWg"/>
                 <outlet property="priceDiffLabel" destination="qVU-9Z-loF" id="HGv-z9-XL7"/>
                 <outlet property="priceLabel" destination="XMY-7z-OH6" id="SDp-US-eg1"/>
