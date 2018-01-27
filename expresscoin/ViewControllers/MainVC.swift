@@ -127,7 +127,22 @@ extension MainVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(38)
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let coin = coinExchanges[indexPath.section].coins[indexPath.row]
+            let index = coins.index(where: {
+                $0.name == coin.name && $0.exchange == coin.exchange
+            })
+            if let index = index {
+                coins.remove(at: index)
+                saveCoin()
+            }
+        }
+    }
 }
+
+// MARK: Data
 
 extension MainVC {
     @objc func add(){
